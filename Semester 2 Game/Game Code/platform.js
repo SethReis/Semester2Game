@@ -16,6 +16,7 @@ stroke(255, 255, 255);
 fill(255);
 rect(this.x, this.y, this.w, this.h);
 stroke(0, 0, 0);
+fill(255, 0, 0);
 }
 
 run(){
