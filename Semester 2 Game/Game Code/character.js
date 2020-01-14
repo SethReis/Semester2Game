@@ -16,14 +16,15 @@ class Character{
   }
 
   checkEdges(){
-    if(this.loc.y > 3*height/4){
-      this.xChange = 0;
-      this.yChange = 0;
-      this.moving = false;
-      this.acc = createVector(0, 0);
-      this.vel = createVector(0, 0);
-      this.loc.y = 3*height/4;
-    }
+    if(this.loc.x+20 > plat.x && this.loc.x-20 < plat.x + plat.w
+      && this.loc.y > plat.y && this.loc.y < plat.y + plat.h){
+        this.xChange = 0;
+        this.yChange = 0;
+        this.moving = false;
+        this.acc = createVector(0, 0);
+        this.vel = createVector(0, 0);
+        this.loc.y = plat.y;
+      }
   }
 
   checkKeys(){
@@ -50,11 +51,12 @@ class Character{
 
   render(){
     fill(255, 0, 0);
-    stroke(255, 0, 0);
+    strokeWeight(0);
     if (keyIsPressed === true && this.moving === false){
       rect(this.loc.x-40, this.loc.y-20, 80, 20);
     } else {
       rect(this.loc.x-20, this.loc.y-40, 40, 40);
     }
+    strokeWeight(1);
   }
 }
