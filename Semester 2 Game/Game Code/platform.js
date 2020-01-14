@@ -3,8 +3,8 @@ class Platform{
 constructor(x, y, w, h){
   this.x = x
   this.y = y
-  this.w = width
-  this.h = height
+  this.w = w
+  this.h = h
 }
 
 update(){
@@ -13,12 +13,13 @@ update(){
 
 render(){
 stroke(255, 255, 255);
+fill(0, 0, 0);
 rect(this.x, this.y, this. w, this.h);
 stroke(0, 0, 0);
+fill(255, 0, 0);
 }
 
 run(){
-this.constructor();
 this.update();
 this.render();
 }

@@ -7,7 +7,7 @@ function setup() {
   cnv.position(0, 0);
   background(0);
   char = new Character(width/2, 3*height/4);
-  plat = new Platform(100, 100, 50, 200);
+  plat = new Platform(200, 200, 150, 25);
 }
 
 //  The draw function is called @ 30 fps
@@ -16,5 +16,7 @@ function draw(){
   stroke(0, 0, 255);
   line(0, 3*height/4, width, 3*height/4);
   line(width/2, 0, width/2, height);
+  line(width/5, 0, width/5, height);
   char.run();
+  plat.run();
 }
