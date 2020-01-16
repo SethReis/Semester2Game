@@ -65,6 +65,11 @@ class Character{
       gameScreen++
       this.loc.y = 1
     }
+
+    if(this.loc.y < 0 && gameScreen > 0){
+      gameScreen--
+      this.loc.y = height-1
+    }
   }
 
   checkKeys(){
@@ -74,7 +79,7 @@ class Character{
     if(keyIsDown(LEFT_ARROW) && abs(this.xChange) <= 30){
       this.xChange--;
     }
-    if(keyIsDown(UP_ARROW) && abs(this.yChange) <= 45){
+    if(keyIsDown(UP_ARROW) && abs(this.yChange) <= 40){
       this.yChange--;
     }
   }
@@ -86,6 +91,7 @@ class Character{
       this.moving = true;
     }
     this.vel.add(this.acc);
+    this.vel.limit(50)
     this.loc.add(this.vel);
   }
 

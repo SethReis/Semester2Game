@@ -29,7 +29,11 @@ function draw(){
 }
 
 function loadPlatforms(){
-  platforms[0][0] = new Platform(100, 100, 100, 100);
-  platforms[0][1] = new Platform(300, 100, 100, 100);
-  platforms[0][2] = new Platform(300, 300, 100, 100);
+  platforms[0][0] = new Platform(width/2-100, height/4, 200, 65); //x, y, width, height
+  platforms[0][1] = new Platform(width/2-78, 300, 190, 60);
+  platforms[0][2] = new Platform(width/2-85, 350, 165, 45);
+  platforms[0][3] = new Platform(width/2-55, 380, 130, 40);
+  platforms[0][4] = new Platform(width/2-45, 410, 110, 35);
+  platforms[1][0] = new Platform(0, height/2+200, width, 35);
+
 }
