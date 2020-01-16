@@ -6,25 +6,54 @@ class Character{
     this.xChange = 0;
     this.yChange = 0;
     this.moving = false;
+    this.sideState = 0;
   }
 
   run(){
     this.checkEdges();
-    this.checkKeys();
+    if(this.moving === false){
+     this.checkKeys(); 
+    }
     this.update();
     this.render();
   }
 
   checkEdges(){
+    //check if land on top
     if(this.loc.x+20 > plat.x && this.loc.x-20 < plat.x + plat.w
-      && this.loc.y > plat.y && this.loc.y < plat.y + plat.h){
-        this.xChange = 0;
-        this.yChange = 0;
-        this.moving = false;
-        this.acc = createVector(0, 0);
-        this.vel = createVector(0, 0);
-        this.loc.y = plat.y;
-      }
+       && this.loc.y > plat.y && this.loc.y < plat.y + plat.h && this.vel.y >= 0){
+      this.sideState = 1;
+    }
+    //check if hit right
+    if(this.loc.x-20 > plat.x && this.loc.x-20 < plat.x + plat.w
+       && this.loc.y > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.x <= 0){
+      this.sideState = 2;
+    }
+    //check if hit left
+    if(this.loc.x+20 > plat.x && this.loc.x+20 < plat.x + plat.w
+       && this.loc.y > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.x >= 0){
+      this.sideState = 2;
+    }
+    //check if hit bottom
+    if(this.loc.x+20 > plat.x && this.loc.x-20 < plat.x + plat.w
+       && this.loc.y-40 > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.y <= 0){
+      this.sideState = 3;
+    }
+    
+    if(this.sideState === 1){
+      this.xChange = 0;
+      this.yChange = 0;
+      this.moving = false;
+      this.acc = createVector(0, 0);
+      this.vel = createVector(0, 0);
+      this.loc.y = plat.y;
+    } else if(this.sideState === 2){
+      this.vel.x = -this.vel.x;
+    } else if(this.sideState === 3){
+      this.vel.y = -this.vel.y;
+    }
+    
+    this.sideState = 0;
   }
 
   checkKeys(){
