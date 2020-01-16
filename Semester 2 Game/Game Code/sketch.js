@@ -22,7 +22,6 @@ function draw(){
   stroke(0, 0, 255);
   line(0, height/4, width, height/4);
   line(width/2, 0, width/2, height);
-  line(width/5, 0, width/5, height);
   char.run();
   for (var i = 0; i < platforms.length; i++){
     for (var j = 0; j < platforms[i].length; j++){
