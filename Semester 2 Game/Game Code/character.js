@@ -12,7 +12,7 @@ class Character{
   run(){
     this.checkEdges();
     if(this.moving === false){
-     this.checkKeys(); 
+     this.checkKeys();
     }
     this.update();
     this.render();
@@ -25,21 +25,21 @@ class Character{
       this.sideState = 1;
     }
     //check if hit right
-    if(this.loc.x-20 > plat.x && this.loc.x-20 < plat.x + plat.w
+    if(this.loc.x-20 > plat.x + plat.w-20 && this.loc.x-20 < plat.x + plat.w
        && this.loc.y > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.x <= 0){
       this.sideState = 2;
     }
     //check if hit left
-    if(this.loc.x+20 > plat.x && this.loc.x+20 < plat.x + plat.w
+    if(this.loc.x+20 > plat.x && this.loc.x+20 < plat.x + 20
        && this.loc.y > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.x >= 0){
       this.sideState = 2;
     }
     //check if hit bottom
     if(this.loc.x+20 > plat.x && this.loc.x-20 < plat.x + plat.w
-       && this.loc.y-40 > plat.y && this.loc.y-40 < plat.y + plat.h && this.vel.y <= 0){
+       && this.loc.y-40 > plat.y + plat.h-20 && this.loc.y-40 < plat.y + plat.h && this.vel.y <= 0){
       this.sideState = 3;
     }
-    
+
     if(this.sideState === 1){
       this.xChange = 0;
       this.yChange = 0;
@@ -52,18 +52,18 @@ class Character{
     } else if(this.sideState === 3){
       this.vel.y = -this.vel.y;
     }
-    
+
     this.sideState = 0;
   }
 
   checkKeys(){
-    if(keyIsDown(RIGHT_ARROW)){
+    if(keyIsDown(RIGHT_ARROW) && abs(this.xChange) <= 30){
       this.xChange++;
     }
-    if(keyIsDown(LEFT_ARROW)){
+    if(keyIsDown(LEFT_ARROW) && abs(this.xChange) <= 30){
       this.xChange--;
     }
-    if(keyIsDown(UP_ARROW)){
+    if(keyIsDown(UP_ARROW) && abs(this.yChange) <= 45){
       this.yChange--;
     }
   }
