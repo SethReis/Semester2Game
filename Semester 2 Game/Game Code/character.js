@@ -16,6 +16,7 @@ class Character{
     }
     this.update();
     this.render();
+    this.screenCheck();
   }
 
   checkEdges(){
@@ -54,6 +55,13 @@ class Character{
     }
 
     this.sideState = 0;
+  }
+
+  screenCheck(){
+    if(this.loc.y > height){
+      gameScreen++
+      this.loc.y = 1
+    }
   }
 
   checkKeys(){

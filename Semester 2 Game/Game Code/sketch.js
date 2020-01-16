@@ -3,12 +3,12 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var platforms = [];
+var gameScreen = 0;
 function setup() {
   var cnv = createCanvas(800, 1000);
   cnv.position(windowWidth/2-width/2, 30);
   background(0);
   char = new Character(width/2, height/4);
-  plat = new Platform(400, 400, 200, 400);
   for (var i = 0; i < 3; i++){
     platforms[i] = [];
   }
