@@ -2,12 +2,18 @@
 // 	Date or version number
 //  This is a comment
 //  The setup function function is called once when your program begins
+var platforms = [];
 function setup() {
-  var cnv = createCanvas(windowWidth, windowHeight);
-  cnv.position(0, 0);
+  var cnv = createCanvas(800, 1000);
+  cnv.position(windowWidth/2-width/2, 30);
   background(0);
   char = new Character(width/2, height/4);
   plat = new Platform(400, 400, 200, 400);
+  for (var i = 0; i < 3; i++){
+    platforms[i] = [];
+  }
+  loadPlatforms();
+  console.log(platforms);
 }
 
 //  The draw function is called @ 30 fps
@@ -17,5 +23,15 @@ function draw(){
   line(0, height/4, width, height/4);
   line(width/2, 0, width/2, height);
   char.run();
-  plat.run();
+  for (var i = 0; i < platforms.length; i++){
+    for (var j = 0; j < platforms[i].length; j++){
+      platforms[i][j].run();
+    }
+  }
+}
+
+function loadPlatforms(){
+  platforms[0][0] = new Platform(100, 100, 100, 100);
+  platforms[0][1] = new Platform(300, 100, 100, 100);
+  platforms[0][2] = new Platform(300, 300, 100, 100);
 }
