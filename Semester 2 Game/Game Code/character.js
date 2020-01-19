@@ -61,18 +61,29 @@ class Character{
   }
 
   screenCheck(){
+	//goes through top
     if(this.loc.y > height){
       gameScreen++
       this.loc.y = 1
     }
-
+	//goes through bottom
     if(this.loc.y < 0 && gameScreen > 0){
       gameScreen--
       this.loc.y = height-1
     }
+	//bounce off sides
+	if (this.loc.x < 0){
+	  this.vel.x= -this.vel.x;
+	  this.loc.x = 2;
+	}
+	if (this.loc.x > width){
+	  this.vel.x= -this.vel.x;
+	  this.loc.x = width-2;
+	}
   }
 
   checkKeys(){
+	//limits
     if(keyIsDown(RIGHT_ARROW) && abs(this.xChange) <= 30){
       this.xChange++;
     }
@@ -82,6 +93,17 @@ class Character{
     if(keyIsDown(UP_ARROW) && abs(this.yChange) <= 40){
       this.yChange--;
     }
+	
+	//no limits
+	//if(keyIsDown(RIGHT_ARROW)){
+      //this.xChange++;
+    //}
+    //if(keyIsDown(LEFT_ARROW)){
+      //this.xChange--;
+    //}
+    //if(keyIsDown(UP_ARROW)){
+      //this.yChange--;
+    //}
   }
 
   update(){
